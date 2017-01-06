@@ -1,26 +1,81 @@
 @import '../variables'
 
-//- Form Parts
+@mixin beam_form
+  //- Form Parts
 
-fieldset
-  margin: 10px
-  padding: 30px
+  fieldset
+    margin: 10px
+    padding: 30px
 
-  border: 1px lightgray solid
-  border-radius: 10px
+    border: 1px lightgray solid
+    border-radius: 10px
 
-  & > legend
-    padding: 0px 15px
-    margin-left: 30px
+    & > legend
+      padding: 0px 15px
+      margin-left: 30px
 
-    font-size: 24px
+      font-size: 24px
 
 
-//- User Inputs
-label
+  //- User Inputs
+  label
+    font-size: 17px
+
+  input[type=file], label, select
+    cursor: pointer
+
+  //- Files
+
+  input[type=file]
+    border: none
+    background-color: rgba($color-neutral, 0.3)
+    font-size: 18px
+
+  //- Selects
+
+  select
+    height: 40px
+    width: 100%
+    
+    font-size: 17px
+
+    background-color: white
+    
+    &:focus
+      border: 1px solid $color-standard
+      outline: none
+
+    &:focus:-moz-focusring
+      color: transparent
+      text-shadow: 0 0 0 #000
+    
+  //- Radio and Checkbox
+
+  input[type=checkbox], input[type=radio]
+    display: inline-block
+    margin-right: 10px
+
+  input[type=text]
+    @include colorful_input
+
+
+@mixin minimalist_input
+  border: none
+  background-color: none
+  color: black
   font-size: 17px
 
-input, textarea
+  &:hover
+    background-color: rgba(black, 0.05)
+
+  &:focus
+    background-color: rgba(black, 0.1)
+    outline: none
+
+
+
+
+@mixin colorful_input
   display: inline-block
   padding: 10px
   margin: 10px 5px
@@ -63,44 +118,8 @@ input, textarea
       background-color: rgba($color-approval, 0.1)
 
 
-textarea
+@mixin colorful_textarea
+  @include colorful_input
   resize: none
   min-height: 90px
 
-
-input[type=file],
-label,
-select
-  cursor: pointer
-
-//- Files
-
-input[type=file]
-  border: none
-  background-color: rgba($color-neutral, 0.3)
-  font-size: 18px
-
-//- Selects
-
-select
-  height: 40px
-  width: 100%
-  
-  font-size: 17px
-
-  background-color: white
-  
-  &:focus
-    border: 1px solid $color-standard
-    outline: none
-
-  &:focus:-moz-focusring
-    color: transparent
-    text-shadow: 0 0 0 #000
-  
-//- Radio and Checkbox
-
-input[type=checkbox], 
-input[type=radio]
-  display: inline-block
-  margin-right: 10px

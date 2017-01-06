@@ -2,7 +2,27 @@
 
 $button-margin-vertical: 5px
 
-button, .btn
+@mixin blank_button
+  border: none
+  background-color: transparent
+
+  &:hover
+    cursor: pointer
+    font-weight: bold
+    font-size: 13px
+    margin-right: -1px
+
+  &:focus
+    font-weight: bold
+    font-size: 16px
+    margin-right: -2px
+    padding-top: 1px
+    padding-bottom: 2px
+    background-color: transparent
+    outline: none
+
+@mixin push_button
+  @include standard_push_button
   display: inline-block
   margin: $button-margin-vertical 3px
   padding: 5px 10px
@@ -28,37 +48,51 @@ button, .btn
     background-color: darken($color-neutral-shadow, 15)
 
   &:active
-    margin-top: $button-margin-vertical + 3px
-    border-bottom: 1px solid $color-neutral-shadow
+    @include depressed_button
+    border-bottom-color: $color-neutral-shadow
 
+@mixin depressed_button
+  margin-top: $button-margin-vertical + 3px
+  border-bottom: 1px solid
 
-  &.btn--small, &.btn--sm
-    padding: 4px 8px
-    font-size: 15px
+@mixin small_push_button
+  @include push_button
+  padding: 4px 8px
+  font-size: 15px
 
-  &.btn--large, &.btn--lg
-    padding: 7px 14px
-    font-size: 20px
+@mixin large_push_button
+  @include push_button
+  padding: 7px 14px
+  font-size: 20px
 
-  &.btn--extra-large, &.btn--xl
-    padding: 10px 20px
-    font-size: 26px
+@mixin extra_large_push_button
+  @include push_button
+  padding: 10px 20px
+  font-size: 26px
 
-
-  &.btn--standard
-    background-color: $color-standard
+@mixin standard_push_button
+  @include push_button
+  background-color: $color-standard
+  border-bottom-color: $color-standard-shadow
+  &:hover
     border-bottom-color: $color-standard-shadow
-    &:focus
-      background-color: darken($color-standard-shadow, 15)
+  &:focus
+    background-color: darken($color-standard-shadow, 15)
 
-  &.btn--approval
-    background-color: $color-approval
+@mixin green_push_button
+  @include push_button
+  background-color: $color-approval
+  border-bottom-color: $color-approval-shadow
+  &:hover
     border-bottom-color: $color-approval-shadow
-    &:focus
-      background-color: darken($color-approval-shadow, 15)
+  &:focus
+    background-color: darken($color-approval-shadow, 15)
 
-  &.btn--danger
-    background-color: $color-danger
+@mixin red_push_button
+  @include push_button
+  background-color: $color-danger
+  border-bottom-color: $color-danger-shadow
+  &:hover
     border-bottom-color: $color-danger-shadow
-    &:focus
-      background-color: darken($color-danger-shadow, 15)
+  &:focus
+    background-color: darken($color-danger-shadow, 15)

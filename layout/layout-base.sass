@@ -1,4 +1,10 @@
-.row
+@mixin responsive-margin
+  margin: 0 15%
+
+  @media all and (max-width: 799px)
+    margin: 0 5%
+
+@mixin row
   display: flex
   align-items: center
   flex-wrap: wrap
@@ -6,21 +12,24 @@
   > *
     margin: 15px 25px
 
-.row--sidelined-items
+@mixin row_spread
+  @include row
   justify-content: space-between
 
-.row--centered-items
+@mixin row_centered
+  @include row
   justify-content: center
 
-.row--collapsed
+
+@mixin collapsed_row
+  @include row
   > *
     margin: 0
 
-.row--no-wrap
+@mixin no_wrap
   flex-wrap: nowrap
 
-
-.col, .column
+@mixin column
   display: flex
   flex-direction: column
   align-items: center
@@ -28,5 +37,6 @@
   > *
     margin: 15px 25px
 
-.column--left-aligned
+@mixin column_left_aligned
+  @include column
   align-items: flex-start

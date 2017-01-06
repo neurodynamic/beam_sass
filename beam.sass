@@ -5,8 +5,9 @@
 @import "cards/cards-base"
 @import "notifications/notifications-base"
 @import "forms/forms-base"
+@import "reset"
 
-body
+@mixin beam-body
   font-size: 15px
   font-family: 'proxima-nova', helvetica neue, helvetica, arial, sans-serif
 
@@ -14,10 +15,14 @@ body
   opacity: 0.5
   cursor: not-allowed
 
-.list--unstyled
+@mixin unstyled-list
   list-style: none
   margin: 0
   padding: 0
+
+.list--unstyled
+  @include unstyled-list
+
 
 .h1--unstyled
   margin: 0

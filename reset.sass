@@ -1,0 +1,42 @@
+// Use this mixin on the html element to use basic beam styles as a CSS reset.
+@mixin beam_reset
+  body
+    @include beam_body
+
+  [disabled], :disabled
+    @include beam_disabled
+
+  .list--unstyled
+    @include unstyled_list
+
+  table
+    @mixin beam_table
+
+  button
+    @mixin standard_push_button
+  
+
+@mixin beam_body
+  font-size: 15px
+  font-family: 'proxima-nova', helvetica neue, helvetica, arial, sans-serif
+
+@mixin beam_disabled
+  opacity: 0.5
+  cursor: not-allowed
+
+@mixin unstyled_list
+  list-style: none
+  margin: 0
+  padding: 0
+
+@mixin fading_link
+  text-decoration: none
+
+  transition: 0.3s
+  
+  &:hover
+    opacity: 0.5
+
+  &:visited
+    text-decoration: none
+
